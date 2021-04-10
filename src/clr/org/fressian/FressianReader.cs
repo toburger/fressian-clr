@@ -917,7 +917,7 @@ namespace org.fressian
                 {
                     code = readNextCode();
                 }
-                catch (EndOfStreamException e)
+                catch (EndOfStreamException)
                 {
                     code = Codes.END_COLLECTION;
                 }
