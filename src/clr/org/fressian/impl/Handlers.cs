@@ -17,6 +17,7 @@ using System.Text.RegularExpressions;
 using System.Linq;
 
 using org.fressian.handlers;
+using System.Collections.Immutable;
 
 namespace org.fressian.impl
 {
@@ -103,7 +104,7 @@ namespace org.fressian.impl
             builder["long[]"] = Codes.LONG_ARRAY;
             builder["boolean[]"] = Codes.BOOLEAN_ARRAY;
             builder["Object[]"] = Codes.OBJECT_ARRAY;
-            return new ImmutableDictionary<object, int>(builder);
+            return ImmutableDictionary.CreateRange(builder);
         }
 
         public static IDictionary<Type, IDictionary<String, WriteHandler>> installHandler(IDictionary<Type, IDictionary<String, WriteHandler>> map
@@ -343,7 +344,7 @@ namespace org.fressian.impl
                 return toDateTime(r.readInt());
             }));
             
-            return new ImmutableDictionary<object, ReadHandler>(handlers);
+            return ImmutableDictionary.CreateRange(handlers);
         }
 
         public static readonly DateTime EPOCH = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);

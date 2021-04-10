@@ -18,6 +18,7 @@ using System.Linq;
 
 using org.fressian.impl;
 using org.fressian.handlers;
+using System.Collections.Immutable;
 
 namespace org.fressian
 {
@@ -32,7 +33,7 @@ namespace org.fressian
             handlers.Add("bytes", new Func<byte[], Object>(x => x));
             handlers.Add("double", new Func<double, Object>(x => x));
             handlers.Add("float", new Func<float, Object>(x => x));
-            coreHandlers = new ImmutableDictionary<object, object>(handlers);
+            coreHandlers = ImmutableDictionary.CreateRange(handlers);
         }
 
         private readonly RawInput rawInput;
