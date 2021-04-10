@@ -26,7 +26,7 @@ namespace fressian_server
 {
     public class Program
     {
-        internal static IPAddress IPADDRESS = IPAddress.Any;
+        internal static IPAddress IPADDRESS = IPAddress.Loopback;
         internal static int PORT = 19876;
         internal static ManualResetEvent SHUTDOWN_EVENT = new ManualResetEvent(false);
 
